@@ -1,0 +1,70 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  background-color: #fafafa;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  font-size: 1.3rem;
+  margin: 0 auto;
+  color: #252525;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 3rem;
+  margin-bottom: 0.8rem;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 2rem;
+  font-weight: bold;
+  display: block;
+  text-shadow: 0 0 2px rgba(122, 122, 122, 0.06);
+}
+
+form {
+  margin-top: 0.2rem;
+  width: 200px;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+}
+
+fieldset {
+  border: none;
+  margin-bottom: 1.1rem;
+}
+fieldset input {
+  width: 50%;
+}
+input[type='text'] {
+  padding: 10px 0;
+  text-indent: 10px;
+  border: solid 2px #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+input[type='text']:focus {
+  outline: none;
+  border-color: #0099ff;
+}
+
+button {
+  display: block;
+  width: 50%;
+  margin: 5px auto 0 auto;
+}
+
+.guess-output {
+  margin: 1.4rem auto 0 auto;
+  width: 200px;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+}
+
+.guess-output_num {
+  font-size: 1.4rem;
+}

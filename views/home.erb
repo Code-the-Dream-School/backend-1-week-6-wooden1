@@ -1,0 +1,14 @@
+<main id="container">
+  <h1>Web Number Guesser</h1>
+  <form action="/" method="post">
+  <fieldset>
+    <label for="guess">Guess a number between 1 and 100:</label>
+    <input type="number" name="guess" id="guess" min="1" max="100">
+    <button type="submit">Submit</button>
+  </fieldset>
+  </form>
+  <section class="guess-output">
+  <p class="guess-output_num"><%= session[:guess_history] %></p>
+  </section>
+</main> 
+ 
