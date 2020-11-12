@@ -1,0 +1,7 @@
+<% if @guess == session[:secret_num] %>
+<%= 'You Win!' %>
+<% else %>
+<%= "You Lost! The Winning Number was: #{session[:secret_num]}" %>
+<% end %>
+
+<button type="submit" name="start-button">Start a New Game.</button>

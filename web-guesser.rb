@@ -2,45 +2,36 @@ require 'sinatra'
 enable :sessions
 
 get '/' do
+  session[:secret_num] = rand 1..100
+  session[:guess_history] = []
   erb :home
 end
 
-def random_secret_num
-  session[:secret_num] = rand 1..100
-  session[:guess_history] = []
-  guess_count = 0
-  @secret_num = session[:secret_num]
-  @guess_history = session[:guess_history]
+post '/' do
   @guess = params[:guess].to_i
-  puts @secret_num
+  session[:guess_history] << @guess
+  guess_count = 0
+  @guess_count = guess_count
+  until guess_count == 7
+    break if @guess == session[:secret_num]
 
-  while guess_count <= 7
-    break if @guess == @secret_num
-
-    if @guess < (@secret_num - 11)
+    if @guess < (session[:secret_num] - 11)
+      puts 'your guess is close but low'
       'Your guess is close but low'
-    elsif @guess <= (@secret_num - 10)
+    elsif @guess <= (session[:secret_num] - 10)
+      puts ' your guess is to low'
       'Your guess is to low'
-    elsif @guess >= (@secret_num + 10)
+    elsif @guess >= (session[:secret_num] + 10)
+      puts 'your guess is close but to high'
       'Your guess is close but to high'
-    elsif @guess > (@secret_num + 11)
+    elsif @guess > (session[:secret_num] + 11)
+      puts 'your guess is way to high'
       'Your guess is way to high'
     end
     guess_count += 1
   end
-  @guess_history << @guess
+  erb :answer if guess_count > 7
 
-  if @guess == @secret_num
-    puts "Winning number is: #{@guess}"
-    "Winning number is: #{@guess}"
-  elsif guess_count == 7
-    puts "You lose! Secret Number: #{@secret_num} Guess History: #{
-           @guess_history
-         }"
-    'You lost!'
-  end
-end
-post '/' do
-  random_secret_num
+  erb :answer if @guess == session[:secret_num]
   erb :home
 end
